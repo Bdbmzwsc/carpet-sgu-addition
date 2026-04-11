@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "carpet-sgu-addition",
+  "version": "${version}",
+  "name": "carpet-sgu-addition",
+  "description": "A carpet extension with SGU style additions.",
+  "authors": [
+    "Bdbmzwsc"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/carpet-sgu-addition/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "org.carpet.sgu.SguCarpetServer"
+    ]
+  },
+  "mixins": [
+    "carpet-sgu-addition.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "carpet": ">=${carpet_core_version}"
+  }
+}
