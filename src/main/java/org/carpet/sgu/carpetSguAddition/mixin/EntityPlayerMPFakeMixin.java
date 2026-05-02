@@ -50,14 +50,19 @@ public abstract class EntityPlayerMPFakeMixin extends ServerPlayerEntity {
         if (!SguSettings.betterFakePlayerProcess) {
             return;
         }
+        cir.setReturnValue(betterCreateFake(username, server, pos, yaw, pitch, dimensionId, gamemode, flying));
+    }
+
+    @org.spongepowered.asm.mixin.Unique
+    private static boolean betterCreateFake(String username, MinecraftServer server, Vec3d pos, double yaw, double pitch, RegistryKey<World> dimensionId, GameMode gamemode, boolean flying) {
         ServerWorld worldIn = server.getWorld(dimensionId);
-        
+
         java.util.UUID offlineUuid = Uuids.getOfflinePlayerUuid(username);
         java.nio.file.Path playerDataDir = server.getSavePath(net.minecraft.util.WorldSavePath.PLAYERDATA);
-        
+
         GameProfile onlineProfile = null;
         boolean onlineUserIsPresent = false;
-        
+
         UserCache.setUseRemote(true);
         try {
             if (server.getUserCache() != null) {
@@ -108,15 +113,14 @@ public abstract class EntityPlayerMPFakeMixin extends ServerPlayerEntity {
                 gameprofile = onlineProfile;
             } else {
                 if (!CarpetSettings.allowSpawningOfflinePlayers) {
-                    cir.setReturnValue(false);
-                    return;
+                    return false;
                 } else {
                     gameprofile = new GameProfile(offlineUuid, username);
                 }
             }
         }
         GameProfile finalGP = gameprofile;
-        
+
         String name = gameprofile.getName();
         spawning.add(name);
 
@@ -150,11 +154,11 @@ public abstract class EntityPlayerMPFakeMixin extends ServerPlayerEntity {
             server.getPlayerManager().sendToDimension(new EntitySetHeadYawS2CPacket(instance, (byte) (instance.getHeadYaw() * 256 / 360)), dimensionId);
             server.getPlayerManager().sendToDimension(EntityPositionSyncS2CPacket.create(instance), dimensionId);
 
-            instance.getDataTracker().set(PLAYER_MODEL_PARTS, (byte) 0x7f);
+            instance.getDataTracker().set(net.minecraft.entity.player.PlayerEntity.PLAYER_MODEL_PARTS, (byte) 0x7f);
             instance.getAbilities().allowFlying = flying;
 
         }, server);
 
-        cir.setReturnValue(true);
+        return true;
     }
 }

@@ -8,11 +8,10 @@ import static carpet.api.settings.RuleCategory.FEATURE;
 
 
 public class SguSettings {
-
-    public static final String SGU = "SGU";
+    public static final String SGU = "sgu_addition";
 
     @Rule(
-            categories = {FEATURE, EXPERIMENTAL,SGU}
+            categories = {SGU, FEATURE, EXPERIMENTAL}
     )
     public static boolean betterFakePlayerProcess = false;
 
