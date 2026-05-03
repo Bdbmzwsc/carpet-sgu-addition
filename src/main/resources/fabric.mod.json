@@ -10,7 +10,7 @@
   "contact": {},
   "license": "MIT",
   "icon": "assets/carpet-sgu-addition/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
     "main": [
       "org.carpet.sgu.SguCarpetServer"

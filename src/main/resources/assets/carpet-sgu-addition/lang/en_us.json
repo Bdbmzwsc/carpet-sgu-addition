@@ -1,5 +1,8 @@
 {
   "carpet.category.sgu_addition": "SGU",
   "carpet.rule.betterFakePlayerProcess.name": "better fake player process",
-  "carpet.rule.betterFakePlayerProcess.desc": "better fake player process"
+  "carpet.rule.betterFakePlayerProcess.desc": "better fake player process",
+
+  "carpet.rule.reverseBlockPosTraversal.name": "reverseBlockPosTraversal",
+  "carpet.rule.reverseBlockPosTraversal.desc": ""
 }

@@ -4,8 +4,11 @@
   "package": "org.carpet.sgu.carpetSguAddition.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "BlockPosMixin",
+    "EntityAccessor",
     "EntityPlayerMPFakeMixin",
-    "EntityAccessor"
+    "ProjectileEntityMixin",
+    "ServerWorldMixin"
   ],
   "client": [
   ],
