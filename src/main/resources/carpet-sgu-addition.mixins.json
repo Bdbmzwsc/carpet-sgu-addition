@@ -6,7 +6,9 @@
   "mixins": [
     "BlockPosMixin",
     "EntityAccessor",
-    "EntityPlayerMPFakeMixin"
+    "EntityPlayerMPFakeMixin",
+    "ProjectileEntityMixin",
+    "ServerWorldMixin"
   ],
   "client": [
   ],

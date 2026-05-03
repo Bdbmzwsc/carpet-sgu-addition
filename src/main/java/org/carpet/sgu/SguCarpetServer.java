@@ -2,7 +2,9 @@ package org.carpet.sgu;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
+import carpet.logging.LoggerRegistry;
 import net.fabricmc.api.ModInitializer;
+import org.carpet.sgu.logger.ProjectileTraker;
 
 import java.util.Map;
 
@@ -26,5 +28,12 @@ public class SguCarpetServer implements CarpetExtension, ModInitializer {
     @Override
     public Map<String, String> canHasTranslations(String lang) {
         return carpet.utils.Translations.getTranslationFromResourcePath(String.format("assets/carpet-sgu-addition/lang/%s.json", lang));
+    }
+    @Override
+    public void registerLoggers()
+    {
+        var logger = ProjectileTraker.create();
+        LoggerRegistry.registerLogger(logger.getLogName(), logger);
+
     }
 }
